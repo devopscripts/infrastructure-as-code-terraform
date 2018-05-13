@@ -1,6 +1,18 @@
 provider "aws" {
   region = "${var.region}"
 }
+terraform {
+  backend "s3" {
+  }
+}
+data "terraform_remote_state" "state" {
+  backend = "s3"
+  config {
+    bucket        = "${var.bucketname}"
+    region        = "${var.region}"
+    key           = "terraform.tfstate"
+  }
+}
 module "vpc" {
   source = "./vpc"
 }
