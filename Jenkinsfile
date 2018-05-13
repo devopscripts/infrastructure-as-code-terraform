@@ -6,7 +6,7 @@ pipeline {
 		MAJOR_VERSION = 1
     }
     stages {
-        stage('deploy-test') {
+        stage('deploy-development') {
             agent {
                 label 'master'
             }
@@ -15,9 +15,23 @@ pipeline {
             }
             steps {
                 sh "echo Branch: ${env.BRANCH_NAME}"
-                sh "terraform init -input=false -backend-config=Testbackend.tfvar"
-                sh "terraform plan -var 'bucketname=testenv-devops-terraform-state' -out=${BRANCH_NAME}.${BUILD_NUMBER}.plan"
-                sh "terraform apply -auto-approve ${BRANCH_NAME}.${BUILD_NUMBER}.plan"
+                sh "terraform init -input=false -backend-config=backend${BRANCH_NAME}.tfvar"
+                sh "terraform plan  -var 'envparm=${BRANCH_NAME}' -var 'bucketname=${BRANCH_NAME}-devops-terraform-state' -out=${BRANCH_NAME}.${BUILD_NUMBER}.plan"
+                sh "terraform apply -var 'envparm=${BRANCH_NAME}' -var 'bucketname=${BRANCH_NAME}-devops-terraform-state' ${BRANCH_NAME}.${BUILD_NUMBER}.plan -auto-approve"
+            }
+        }
+        stage('deploy-test') {
+            agent {
+                label 'master'
+            }
+            when {
+                branch 'test'
+            }
+            steps {
+                sh "echo Branch: ${env.BRANCH_NAME}"
+                sh "terraform init -input=false -backend-config=backend${BRANCH_NAME}.tfvar"
+                sh "terraform plan  -var 'envparm=${BRANCH_NAME}' -var 'bucketname=testenv-devops-terraform-state' -out=${BRANCH_NAME}.${BUILD_NUMBER}.plan"
+                sh "terraform apply -var 'envparm=${BRANCH_NAME}' -var 'bucketname=testenv-devops-terraform-state' ${BRANCH_NAME}.${BUILD_NUMBER}.plan -auto-approve"
             }
         }
         stage('deploy-prod') {
@@ -25,7 +39,7 @@ pipeline {
                 label 'master'
             }
             when {
-                branch 'master'
+                branch 'production'
             }
             steps {
                 sh "echo Branch: ${env.BRANCH_NAME}"

@@ -1,10 +1,12 @@
 variable "bucketname" {}
-#variable "envparm" {}
+variable "envparm" {
+  default = "test"
+}
 variable "region" {
   default = "ap-southeast-2"
 }
 variable "vpc_cidr" {
-  description = "CIDR for the Public Subnet"
+  description = "CIDR for the entrie vpc"
   default = "10.0.0.0/16"
 }
 variable "key_name" {
