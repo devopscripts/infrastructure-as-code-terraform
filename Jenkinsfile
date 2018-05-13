@@ -17,7 +17,7 @@ pipeline {
                 sh "echo Branch: ${env.BRANCH_NAME}"
                 sh "terraform init -input=false -backend-config=backend.${BRANCH_NAME}.tfvar"
                 sh "terraform plan  -var 'envparm=${BRANCH_NAME}' -var 'bucketname=${BRANCH_NAME}-devops-terraform-state' -out=${BRANCH_NAME}.${BUILD_NUMBER}.plan"
-                sh "terraform apply -var 'envparm=${BRANCH_NAME}' -var 'bucketname=${BRANCH_NAME}-devops-terraform-state' ${BRANCH_NAME}.${BUILD_NUMBER}.plan -auto-approve"
+                sh "terraform apply -var 'envparm=${BRANCH_NAME}' ${BRANCH_NAME}.${BUILD_NUMBER}.plan -auto-approve"
             }
         }
         stage('deploy-test') {
