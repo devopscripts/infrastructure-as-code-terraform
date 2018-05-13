@@ -16,7 +16,9 @@ pipeline {
             steps {
                 sh "echo Branch: ${env.BRANCH_NAME}"
                 sh "terraform init"
-                sh "terraform apply"
+                sh "testenv-devops-terraform-state"
+                sh "terraform.tfstate"
+                sh "ap-southeast-2"
             }
         }
 
