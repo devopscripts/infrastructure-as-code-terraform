@@ -15,6 +15,7 @@ pipeline {
             }
             steps {
                 sh "echo Branch: ${env.BRANCH_NAME}"
+                sh "terraform init"
                 sh "terraform apply"
             }
         }
