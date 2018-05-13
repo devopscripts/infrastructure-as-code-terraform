@@ -3,6 +3,7 @@ provider "aws" {
 }
 module "vpc" {
   source = "./vpc"
+  envparm= "${var.envparm}"
 }
 
 module "subnet" {
