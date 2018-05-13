@@ -1,0 +1,3 @@
+prodenv-devops-terraform-state
+terraform.tfstate
+ap-southeast-2
