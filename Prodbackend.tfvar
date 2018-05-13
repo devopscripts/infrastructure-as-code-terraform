@@ -1,0 +1,3 @@
+bucket = "prodenv-devops-terraform-state"
+region = "ap-southeast-2"
+key    = "terraform.tfstate"
