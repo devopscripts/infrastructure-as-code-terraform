@@ -1,5 +1,5 @@
 variable "bucketname" {}
-variable "envparm" {}
+#variable "envparm" {}
 variable "region" {
   default = "ap-southeast-2"
 }
