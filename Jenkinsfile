@@ -19,6 +19,19 @@ pipeline {
                 sh "terraform plan -var 'bucketname=testenv-devops-terraform-state'"
             }
         }
+        stage('deploy-prod') {
+            agent {
+                label 'master'
+            }
+            when {
+                branch 'master'
+            }
+            steps {
+                sh "echo Branch: ${env.BRANCH_NAME}"
+                sh "terraform init -input=false -backend-config=Prodbackend.tfvar"
+                sh "terraform plan -var 'bucketname=prodenv-devops-terraform-state'"
+            }
+        }
 
 
     }
