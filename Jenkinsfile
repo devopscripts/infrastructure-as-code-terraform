@@ -15,7 +15,7 @@ pipeline {
             }
             steps {
                 sh "echo Branch: ${env.BRANCH_NAME}"
-                sh "terraform init <  test_response.txt"
+                sh "terraform init -input=false -backend-config=Testbackend.tfvar"
                 sh "terraform plan -var 'bucketname=testenv-devops-terraform-state'"
             }
         }
