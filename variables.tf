@@ -1,4 +1,5 @@
 variable "bucketname" {}
+variable "envparm" {}
 variable "region" {
   default = "ap-southeast-2"
 }
