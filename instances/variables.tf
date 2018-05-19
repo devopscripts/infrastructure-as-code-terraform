@@ -11,5 +11,6 @@ variable "ami" {
 variable "key_name" {}
 variable "envparm" {} 
 variable "public_subnet_1_id" {}
+variable "private_subnet_1_id" {}
 variable "web_access_inbound_sg_id" {}
 variable "ssh_access_inbound_sg_id" {}

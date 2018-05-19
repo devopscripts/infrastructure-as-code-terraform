@@ -1,6 +1,6 @@
 resource "aws_instance" "web_server_1" {
   ami = "${lookup(var.ami, var.region)}"
-  instance_type = "t2_micro"
+  instance_type = "t2.micro"
   tages = {
     name = "web_server1"
     Environment = "${var.envparm}"
