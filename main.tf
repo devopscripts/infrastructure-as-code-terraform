@@ -23,16 +23,16 @@ module "route" {
   private_subnet_3_id = "${module.subnet.private_subnet_3_id}"
   envparm= "${var.envparm}"
 }
-/*
+
 module "instances" {
   source = "./instances"
   region = "${var.region}"
   public_subnet_1_id  = "${module.subnet.public_subnet_1_id}"
   private_subnet_1_id = "${module.subnet.private_subnet_1_id}"
-  ssh_access_sg_id = "${module.vpc.ssh_access_sg_id}"
-  web_access_sg_id = "${module.vpc.web_access_sg_id}"
+  ssh_access_inbound_sg_id = "${module.vpc.ssh_access_inbound_sg_id}"
+  web_access_inbound_sg_id = "${module.vpc.web_access_inbound_sg_id}"
   key_name = "${var.key_name}"
   envparm= "${var.envparm}"
 }
-*/
+
 
