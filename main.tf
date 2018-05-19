@@ -16,7 +16,11 @@ module "route" {
   vpcid = "${module.vpc.vpcid}"
   gatewayid = "${module.vpc.igwid}"
   public_subnet_1_id  = "${module.subnet.public_subnet_1_id}"
+  public_subnet_2_id  = "${module.subnet.public_subnet_2_id}"
+  public_subnet_3_id  = "${module.subnet.public_subnet_3_id}"
   private_subnet_1_id = "${module.subnet.private_subnet_1_id}"
+  private_subnet_2_id = "${module.subnet.private_subnet_2_id}"
+  private_subnet_3_id = "${module.subnet.private_subnet_3_id}"
   envparm= "${var.envparm}"
 }
 /*
