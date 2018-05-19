@@ -1,3 +1,4 @@
+variable "envparm" {}
 
 #
 # From module: vpc

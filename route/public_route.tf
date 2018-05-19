@@ -5,7 +5,7 @@ resource "aws_route_table" "Public" {
     gateway_id = "${var.gatewayid}"
   }
   tags {
-    Environment = "Test"
+    Environment = "${var.envparm}"
     Name =  "Public_route_table"
   }
 }

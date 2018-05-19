@@ -1,7 +1,7 @@
 resource "aws_route_table" "Private" {
   vpc_id = "${var.vpcid}"
   tags {
-    Environment = "Test"
+    Environment = "${var.envparm}"
     Name =  "Private_route_table"
   }
 }
