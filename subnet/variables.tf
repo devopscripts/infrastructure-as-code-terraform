@@ -27,9 +27,7 @@ variable "private_subnet_3_cidr" {
   default = "10.0.23.0/24"
 }
 
-variable "key_name" {}
 variable "envparm" {} 
-
 
 #
 # From module: vpc
