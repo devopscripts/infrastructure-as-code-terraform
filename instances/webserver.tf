@@ -20,6 +20,9 @@ resource "aws_instance" "web_server_1" {
     Environment = "${var.envparm}"
   }
 }
+output "web_server_1_ip" {
+  value = "${aws_instance.web_server_1.private_ip}"
+}
 
 resource "aws_instance" "web_server_2" {
   ami = "${lookup(var.ami, var.region)}"
@@ -43,6 +46,9 @@ resource "aws_instance" "web_server_2" {
     Environment = "${var.envparm}"
   }
 }
+output "web_server_2_ip" {
+  value = "${aws_instance.web_server_2.private_ip}"
+}
 
 resource "aws_instance" "web_server_3" {
   ami = "${lookup(var.ami, var.region)}"
@@ -65,5 +71,8 @@ resource "aws_instance" "web_server_3" {
     name = "web_server3"
     Environment = "${var.envparm}"
   }
+}
+output "web_server_3_ip" {
+  value = "${aws_instance.web_server_3.private_ip}"
 }
 

@@ -12,6 +12,16 @@ resource "aws_instance" "haproxy_1" {
               echo '123' |sudo passwd root --stdin
               yum install haproxy -y
               systemctl enable haproxy
+              echo "frontend haproxy_in" >> /etc/haproxy/haproxy.cfg
+              echo "    bind *:80      " >> /etc/haproxy/haproxy.cfg
+              echo "    default_backend haproxy_http" >> /etc/haproxy/haproxy.cfg
+              echo "backend haproxy_http          " >> /etc/haproxy/haproxy.cfg
+              echo "    balance roundrobin   " >> /etc/haproxy/haproxy.cfg
+              echo "    mode http   " >> /etc/haproxy/haproxy.cfg
+              echo "    server web1 ${aws_instance.web_server1.private_ip} " >> /etc/haproxy/haproxy.cfg
+              echo "    server web2 ${aws_instance.web_server2.private_ip} " >> /etc/haproxy/haproxy.cfg
+              echo "    server web3 ${aws_instance.web_server3.private_ip} " >> /etc/haproxy/haproxy.cfg
+              systemctl restart haproxy
               EOF
   tags = {
     name = "haproxy_1"
