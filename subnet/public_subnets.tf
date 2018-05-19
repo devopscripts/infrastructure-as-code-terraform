@@ -2,6 +2,7 @@ resource "aws_subnet" "public_subnet_1" {
   vpc_id = "${var.vpcid}"
   cidr_block = "${var.public_subnet_1_cidr}"
   availability_zone = "${element(var.availability_zones, 0)}"
+  map_public_ip_on_launch = true
   tags {
     Environment = "${var.envparm}"
     Name = "public_subnet_1"
@@ -15,6 +16,7 @@ resource "aws_subnet" "public_subnet_2" {
   vpc_id = "${var.vpcid}"
   cidr_block = "${var.public_subnet_2_cidr}"
   availability_zone = "${element(var.availability_zones, 1)}"
+  map_public_ip_on_launch = true
   tags {
     Environment = "${var.envparm}"
     Name = "public_subnet_2"
@@ -28,6 +30,7 @@ resource "aws_subnet" "public_subnet_3" {
   vpc_id = "${var.vpcid}"
   cidr_block = "${var.public_subnet_3_cidr}"
   availability_zone = "${element(var.availability_zones, 2)}"
+  map_public_ip_on_launch = true
   tags {
     Environment = "${var.envparm}"
     Name = "public_subnet_3"

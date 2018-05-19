@@ -28,6 +28,8 @@ module "instances" {
   source = "./instances"
   region = "${var.region}"
   public_subnet_1_id  = "${module.subnet.public_subnet_1_id}"
+  public_subnet_2_id  = "${module.subnet.public_subnet_2_id}"
+  public_subnet_3_id  = "${module.subnet.public_subnet_3_id}"
   private_subnet_1_id = "${module.subnet.private_subnet_1_id}"
   ssh_access_inbound_sg_id = "${module.vpc.ssh_access_inbound_sg_id}"
   web_access_inbound_sg_id = "${module.vpc.web_access_inbound_sg_id}"
