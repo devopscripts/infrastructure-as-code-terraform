@@ -18,9 +18,9 @@ resource "aws_instance" "haproxy_1" {
               echo "backend haproxy_http          " >> /etc/haproxy/haproxy.cfg
               echo "    balance roundrobin   " >> /etc/haproxy/haproxy.cfg
               echo "    mode http   " >> /etc/haproxy/haproxy.cfg
-              echo "    server web1 ${aws_instance.web_server1.private_ip} " >> /etc/haproxy/haproxy.cfg
-              echo "    server web2 ${aws_instance.web_server2.private_ip} " >> /etc/haproxy/haproxy.cfg
-              echo "    server web3 ${aws_instance.web_server3.private_ip} " >> /etc/haproxy/haproxy.cfg
+              echo "    server web1 ${aws_instance.web_server_1.private_ip} " >> /etc/haproxy/haproxy.cfg
+              echo "    server web2 ${aws_instance.web_server_2.private_ip} " >> /etc/haproxy/haproxy.cfg
+              echo "    server web3 ${aws_instance.web_server_3.private_ip} " >> /etc/haproxy/haproxy.cfg
               systemctl restart haproxy
               EOF
   tags = {
