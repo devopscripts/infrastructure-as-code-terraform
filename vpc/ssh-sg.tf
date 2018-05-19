@@ -7,11 +7,6 @@ resource "aws_security_group" "ssh_access_inbound_sg" {
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  egress {
-    from_port = 0
-    to_port = 0
-    cidr_blocks = ["0.0.0.0/0"]
-  }
   vpc_id = "${aws_vpc.vpc.id}"
   tags {
     Environment = "${var.envparm}"
